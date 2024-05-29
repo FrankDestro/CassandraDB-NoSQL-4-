@@ -36,6 +36,10 @@ sed -i 's/sasi_indexes_enabled: false/sasi_indexes_enabled: true/' /etc/cassandr
 
 ![image](https://github.com/FrankDestro/CassandraDB-NoSQL-4-/assets/93776452/2a2b4cfd-c4e8-4794-bc5f-c560a072feff)
 
+### Verificar o arquivo de configuração cassandra.yaml. 
+```js
+root@5af5456c2edb:/# cat /etc/cassandra/cassandra.yaml
+```
 
 ### Container DockerCompose do Cassandra para desenvolvimento
 
