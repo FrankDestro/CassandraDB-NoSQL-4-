@@ -17,6 +17,36 @@ docker run -d -p 9042:9042 --name cassandra1 cassandra:3.11.10
 ```
 docker exec -it cassandra1 bash
 ```
+
+### Container DockerCompose do Cassandra para desenvolvimento
+
+```js
+version: '3.9'
+
+services:
+  cassandra:
+    image: cassandra:4.1.5
+    container_name: cassandraDbDockerCompose
+    ports:
+      - "9042:9042"
+    environment:
+      - CASSANDRA_CLUSTER_NAME=MyCluster
+      - CASSANDRA_DC=DC1
+      - CASSANDRA_RACK=RAC1
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+    networks:
+      - cassandra_net
+
+volumes:
+  cassandra_data:
+
+networks:
+  cassandra_net:
+    driver: bridge
+```
+
 ### cqlsh
 ```
 describe keyspaces
