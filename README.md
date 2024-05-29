@@ -18,6 +18,25 @@ docker run -d -p 9042:9042 --name cassandra1 cassandra:3.11.10
 docker exec -it cassandra1 bash
 ```
 
+### Habilitar a SASI para indexar as colunas. 
+
+#### Acessar o shell do cassandra.
+```js
+frank@DESKTOP-LGQGKIU:~/docker$ docker exec -it 5af /bin/bash
+```
+#### Acessar o arquivo cassandra.yaml de configurações. 
+```js
+root@5af5456c2edb:/# cat /etc/cassandra/cassandra.yaml
+```
+#### Executar o comando abaixo para habilitar o SASI. 
+```js
+sed -i 's/sasi_indexes_enabled: false/sasi_indexes_enabled: true/' /etc/cassandra/cassandra.yaml
+```
+#### Verificar na atributo abaixo a alteração. 
+
+![image](https://github.com/FrankDestro/CassandraDB-NoSQL-4-/assets/93776452/2a2b4cfd-c4e8-4794-bc5f-c560a072feff)
+
+
 ### Container DockerCompose do Cassandra para desenvolvimento
 
 ```js
