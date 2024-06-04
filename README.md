@@ -22,11 +22,11 @@ docker exec -it cassandra1 bash
 
 #### Acessar o shell do cassandra.
 ```js
-frank@DESKTOP-LGQGKIU:~/docker$ docker exec -it 5af /bin/bash
+docker exec -it 5af /bin/bash
 ```
 #### Acessar o arquivo cassandra.yaml de configurações. 
 ```js
-root@5af5456c2edb:/# cat /etc/cassandra/cassandra.yaml
+cat /etc/cassandra/cassandra.yaml
 ```
 #### Executar o comando abaixo para habilitar o SASI. 
 ```js
