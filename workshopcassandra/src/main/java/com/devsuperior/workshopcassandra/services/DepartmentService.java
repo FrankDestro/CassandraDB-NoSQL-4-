@@ -42,11 +42,18 @@ public class DepartmentService {
         return new DepartmentDTO(entity);
     }
 
+    public void deleteById(UUID id) {
+        if (!departmentRepository.existsById(id)) {
+            throw new ResourceNotFoundException("id not found");
+        }
+        departmentRepository.deleteById(id);
+    }
+
     private void copyDtoToEntity(DepartmentDTO dto, Department entity) {
         entity.setName(dto.getName());
     }
 
-    private Department getById (UUID id) {
+    private Department getById(UUID id) {
         Optional<Department> result = departmentRepository.findById(id);
         return result.orElseThrow(() -> new ResourceNotFoundException("id not found"));
     }
