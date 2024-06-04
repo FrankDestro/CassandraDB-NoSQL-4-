@@ -29,7 +29,15 @@ public class Product {
     private Instant moment;
     private String name;
     private String description;
-    
+
     private List<@Frozen Prop> props = new ArrayList<>();
 
+    public Product(UUID id,  String department, Double price, Instant moment, String name, String description) {
+        this.id = id;
+        this.department = department;
+        this.price = price;
+        this.moment = moment;
+        this.name = name;
+        this.description = description;
+    }
 }
