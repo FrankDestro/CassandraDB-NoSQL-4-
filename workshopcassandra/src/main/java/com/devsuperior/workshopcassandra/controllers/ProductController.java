@@ -28,4 +28,11 @@ public class ProductController {
         List<ProductDTO> list = productService.findByDepartment(department);
         return ResponseEntity.ok(list);
     }
+
+    @GetMapping(value = "/description")
+    public ResponseEntity<List<ProductDTO>> findByDescription(
+            @RequestParam(name = "text", defaultValue = "") String text) {
+        List<ProductDTO> list = productService.findByDescription(text);
+        return ResponseEntity.ok(list);
+    }
 }

@@ -27,8 +27,23 @@ public class ProductService {
         return result.orElseThrow(() -> new ResourceNotFoundException("id not found"));
     }
 
-    public List<ProductDTO> findByDepartment (String department) {
-        List<Product> result = productRepository.findByDepartment(department);
+    public List<ProductDTO> findByDepartment(String department) {
+        List<Product> result;
+        if ("".equals(department)) {
+            result = productRepository.findAll();
+        } else {
+            result = productRepository.findByDepartment(department);
+        }
+        return result.stream().map(x -> (new ProductDTO(x))).toList();
+    }
+
+    public List<ProductDTO> findByDescription(String text) {
+        List<Product> result;
+        if ("".equals(text)) {
+            result = productRepository.findAll();
+        } else {
+            result =productRepository.findByDescription("%"+text+"%");
+        }
         return result.stream().map(x -> (new ProductDTO(x))).toList();
     }
 }
